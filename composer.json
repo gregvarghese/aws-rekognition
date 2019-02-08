@@ -1,12 +1,18 @@
 {
-    "name": "larareko/aws-rekognition",
-    "description": "A Laravel package for the AWS Rekognition",
+    "name": "gvarghese/aws-rekognition",
+    "description": "A Laravel package for AWS Rekognition which includes support for detectText",
+    "keywords": ["aws","rekognition","detecttext","aws-rekognition"],
+    "homepage": "https://github.com/gregvarghese/aws-rekognition",
     "require-dev": {
         "phpunit/phpunit": "~5.7",
         "orchestra/testbench": "~3.0"
     },
     "license": "MIT",
     "authors": [
+        {
+            "name": "Gregory Varghese",
+            "email": "gregory@gregoryvarghese.com"
+        },
         {
             "name": "Alejandro",
             "email": "acarste@okstate.edu"
@@ -21,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Larareko\\Rekognition\\": "src/"
+            "gvarghese\\Rekognition\\": "src/"
         }
     }
 }

@@ -1,4 +1,4 @@
-<?php   namespace Larareko\Rekognition;
+<?php   namespace gvarghese\Rekognition;
 
 use Aws\Rekognition\RekognitionClient;
 use Aws\S3\S3Client;
@@ -61,7 +61,12 @@ class Rekognition
     }
     
     /**
-     * Detects faces within an image (JPEG or PNG) that is provided as input
+     * Detects faces within an image that is provided as input.
+     * DetectFaces detects the 100 largest faces in the image.
+     * For each face detected, the operation returns face details.
+     * These details include a bounding box of the face, a confidence value (that the bounding box contains a face),
+     * and a fixed set of attributes such as facial landmarks (for example, coordinates of eye and mouth), gender,
+     * presence of beard, sunglasses, and so on.
      * 
      * @param array     $params
      * @return array
@@ -72,6 +77,13 @@ class Rekognition
     }
     
     /**
+     * Detects faces within an image that is provided as input.
+     * DetectFaces detects the 100 largest faces in the image.
+     * For each face detected, the operation returns face details.
+     * These details include a bounding box of the face, a confidence value (that the bounding box contains a face),
+     * and a fixed set of attributes such as facial landmarks (for example, coordinates of eye and mouth), gender,
+     * presence of beard, sunglasses, and so on.
+     *
      * @param array     $params
      * @return array
      */
@@ -79,7 +91,48 @@ class Rekognition
     {
         return $this->client->detectFacesAsync($params);
     }
-    
+
+
+    /**
+     * Detects text in the input image and converts it into machine-readable text.
+     *
+     * You pass the input image either as base64-encoded image bytes or as a reference to an image in an Amazon S3 bucket.
+     * If you use the to call Amazon Rekognition operations, passing image bytes is not supported.
+     * The image must be either a PNG or JPEG formatted file.
+     *
+     * https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-rekognition-2016-06-27.html#detecttext
+     *
+     * @param array     $params
+     * @return array
+     * The DetectText operation returns text in an array of TextDetection elements, TextDetections.
+     * Each TextDetection element provides information about a single word or line of text that was
+     * detected in the image.
+     */
+    public function detectText(array $params = [])
+    {
+        return $this->client->detectText($params);
+    }
+
+    /**
+     * Detects text in the input image and converts it into machine-readable text.
+     *
+     * You pass the input image either as base64-encoded image bytes or as a reference to an image in an Amazon S3 bucket.
+     * If you use the to call Amazon Rekognition operations, passing image bytes is not supported.
+     * The image must be either a PNG or JPEG formatted file.
+     *
+     * https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-rekognition-2016-06-27.html#detecttext
+     *
+     * @param array     $params
+     * @return array
+     * The DetectText operation returns text in an array of TextDetection elements, TextDetections.
+     * Each TextDetection element provides information about a single word or line of text that was
+     * detected in the image.
+     */
+    public function detectTextAsync(array $params = [])
+    {
+        return $this->client->detectTextAsync($params);
+    }
+
     /**
      * Creates a collection in an AWS Region
      * 
@@ -152,7 +205,7 @@ class Rekognition
     {
         return $this->client->deleteFaces([
             'CollectionId' => $collectionId,
-            'FacesIds' => $faceIds
+            'FaceIds' => $faceIds
         ]);
     }
     
@@ -165,7 +218,7 @@ class Rekognition
     {
         return $this->client->deleteFacesAsync([
             'CollectionId' => $collectionId,
-            'FacesIds' => $faceIds
+            'FaceIds' => $faceIds
         ]);
     }
     

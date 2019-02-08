@@ -1,6 +1,6 @@
 <?php
 
-namespace Larareko\Rekognition;
+namespace gvarghese\Rekognition;
 
 use Illuminate\Support\Facades\Facade;
 

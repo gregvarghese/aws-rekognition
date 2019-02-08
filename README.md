@@ -1,4 +1,6 @@
-# larareko/aws-rekognition
+# gvarghese/aws-rekognition
+
+Forked from larareko/aws-rekognition and updated, as it was missing support for detectText support and appears to have been abandoned.
 
 A Laravel package/facade for the Rekognition API PHP SDK.
 
@@ -14,34 +16,15 @@ Create an account at [AWS](https://aws.amazon.com/console/) and take note of you
 
 In your terminal application move to the root directory of your laravel project using the cd command and require the project as a dependency using composer.
 
-composer require larareko/aws-rekognition
+composer require gvarghese/aws-rekognition
 
 This will add the following lines to your composer.json and download the project and its dependencies to your projects ./vendor directory:
 
-```javascript
-// 
-
-./composer.json
-{
-    "name": "larareko/larareko-demo",
-    "description": "A dummy project used to test the Laravel Larareko (AWS Rekognition) Facade.",
-
-    // ...
-
-    "require": {
-        "php": ">=5.5.9",
-        "laravel/framework": "5.2.*",
-        "larareko/aws-rekognition": "0.1*",
-        // ...
-    },
-
-    //...
-}
-```
-
 ## Usage
 
-In order to use the static interface we must customize the application configuration to tell the system where it can find the new service. Open the file config/app.php and add the following lines ([a], [b]):
+With Laravel 5.5, the package should auto-register.
+
+For older versions, open config/app.php and add the following lines ([a], [b]):
 
 ```php
 
@@ -58,7 +41,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Larareko\Rekognition\RekognitionServiceProvider::class, // [a]
+        gvarghese\Rekognition\RekognitionServiceProvider::class, // [a]
 
         /*
          * Application Service Providers...
@@ -79,7 +62,7 @@ return [
 
         // ...
 
-        'Rekognition' => 'Larareko\Rekognition\RekognitionFacade', // [b]
+        'Rekognition' => 'gvarghese\Rekognition\RekognitionFacade', // [b]
         'Hash' => Illuminate\Support\Facades\Hash::class,
 
         // ...
@@ -123,9 +106,6 @@ class LabelDetectionImage extends Model
 
 ```
 
-## Testing
-
-Unit Tests are created with PHPunit and orchestra/testbench, they can be ran with ./vendor/bin/phpunit.
 
 ## Contributing
 
